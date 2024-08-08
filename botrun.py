@@ -23,4 +23,14 @@ async def stack(ctx):
         await member.add_roles(role2)
 
 
+@bot.command()
+async def kickk(ctx):
+    guild = bot.get_guild(1269678241417924809)  
+
+    role = get(guild.roles, name="4 курс")
+    
+    members = role.members
+    for member in members:
+        await member.kick()  
+
 bot.run(os.getenv('TOKEN'))
