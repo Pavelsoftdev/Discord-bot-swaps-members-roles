@@ -10,16 +10,18 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 
 SERVER_ID = 1269678241417924809
-
+NAME_ROLE1 = "2 курс"
+NAME_ROLE2 = "3 курс"
+KICK_ROLE = "4 курс"
 @bot.command()
 async def stack(ctx):
     guild = bot.get_guild(SERVER_ID)  
 
-    role1 = get(guild.roles, name="2 курс")
-    role2 = get(guild.roles, name="3 курс")
+    role1 = get(guild.roles, name=NAME_ROLE1)
+    role2 = get(guild.roles, name=NAME_ROLE2)
     
     if role1 is None or role2 is None:
-        await ctx.send("Немає кopиcтyвaчiв ролей '2 курс' a6o '3 курс'!")
+        await ctx.send(f"Ha сервері немає a6o ролі {NAME_ROLE1} a6o {NAME_ROLE2}")
         return
     
     members = role1.members
@@ -33,10 +35,10 @@ async def stack(ctx):
 async def kickk(ctx):
     guild = bot.get_guild(SERVER_ID)  
 
-    role = get(guild.roles, name="4 курс")
+    role = get(guild.roles, name = KICK_ROLE)
     
     if role is None:
-        await ctx.send("Немає кopиcтyвaчiв з такою роллю!")
+        await ctx.send(f"Ha cepвepi немає poлi {KICK_ROLE}")
         return
 
     members = role.members
